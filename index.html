@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Celebration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image:linear-gradient(to right,cyan,yellow,blue);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #e44d26+blue;
+        }
+
+        #countdown {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #message {
+            font-size: 1.5em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the New Year Celebration!<br>from Ankit...<br>To all...<br>waiting with curiosity...</h1>
+    <div id="countdown"></div>
+    <div id="message"></div>
+
+    <script>
+        // Set the date we're counting down to (New Year)
+        const countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // Display a message when the countdown is over
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "Happy New Year!";
+                document.getElementById("message").innerHTML = "Wishing you a year filled with joy and success!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
